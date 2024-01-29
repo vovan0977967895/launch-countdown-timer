@@ -1,13 +1,20 @@
 'use strict';
 
-const deadLine = '2024-02-19';
+const inputDaysTimer = 20;
+const inputHouersTimer = 0;
+const inputMinutesTimer = 0;
+const inputSecondsTimer = 3;
+
+const deadLine = (Date.parse(new Date()) + (inputDaysTimer * 60 * 60 * 1000 *24) + (inputHouersTimer * 60 * 60 * 1000) + (inputMinutesTimer * 60 * 1000) + (inputSecondsTimer) * 1000);
+
 
 function  getNumTimer (endTime){
     let days = '';
     let hours = '';
     let minutes = '';
     let seconds = '';
-    let t = Date.parse(endTime) -Date.parse(new Date());
+    /* let t = Date.parse(endTime) -Date.parse(new Date()); */
+    let t = endTime -Date.parse(new Date());
     console.log(t);
     if( t <=0 ){
        days = 0;
@@ -54,6 +61,10 @@ function outputValue ( endTime) {
         hoursOut.innerHTML = getZero(timeValue.hours);
         minutesOut.innerHTML = getZero(timeValue.minutes);
         secondsOut.innerHTML = getZero(timeValue.seconds);
+
+        if(timeValue.t <= 0){
+         clearInterval(timeInterval);
+        }
     } 
 }
 outputValue (deadLine)
