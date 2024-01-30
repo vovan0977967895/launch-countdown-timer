@@ -73,12 +73,36 @@ footer {
 	font-size: 80px;	
 }
 .number{
+	position: relative;
 	display: flex;
 	width: 150px;
-	height: 150px;
+	height: 140px;
+	overflow: hidden;
+  	border: 1px solid #000;
 	border-radius: 10px;
 	color: var(--Soft-red);
-	background: linear-gradient(to bottom, #2e304a 50%, hsl(236, 21%, 26%) 50%);
+	/* background: linear-gradient(to bottom, #2e304a 50%, hsl(236, 21%, 26%) 50%); */
+	background: linear-gradient(
+    to bottom,
+    #0a2c8a 0%,
+    #2a2a41 49%,
+    #000 50%,
+    #34364f 51%,
+    #cccf1a 100%
+  );
+  /* filter: drop-shadow(0 6px 2px #060642); */
+  clip-path: polygon(
+    -10% -10%,
+    0 0,
+    0 49.5%,
+    110% 49.5%,
+    110% 50.5%,
+    0 50.5%,
+    0 110%,
+    110% 110%,
+    110% 110%,
+    110% 0%
+  );
 	margin: 0 13px 30px;	
 	align-items: center;
 	justify-content: center;
@@ -87,10 +111,87 @@ footer {
 	font-family: 'Red Hat Text', sans-serif;
 	box-shadow: 0px 8px 4px #131317;
 	position: relative;	
+	transform-style: preserve-3d;
+  	z-index: 1;
 }
 .number:nth-last-child(){
 	margin-right: none;
 }
+.turn {
+	position: absolute;
+	top: 268px;
+	/* right: 152px; */
+	z-index: 1;
+	transform-style: preserve-3d;
+	transform: perspective(300px);
+	filter: none;
+	animation: 1s cubic-bezier(0.57, 0.31, 0.84, 0.61) infinite running flip;
+  }
+
+  @keyframes flip {
+	from {
+	  transform: translate3d(0, 0, 0px) rotateX(0deg) skew(0deg);
+	  clip-path: polygon(
+		0 51%,
+		0 49%,
+		0 0,
+		100% 0,
+		100% 49%,
+		0 49%,
+		0 51%,
+		100% 51%,
+		100% 51%,
+		100% 51%
+	  );
+	}
+  
+	49% {
+	  transform: translate3d(0, 0, 0px) rotateX(90deg) skew(-5deg);
+	  clip-path: polygon(
+		0 51%,
+		0 49%,
+		0 0,
+		100% 0,
+		100% 49%,
+		0 49%,
+		0 51%,
+		100% 51%,
+		100% 51%,
+		100% 51%
+	  );
+	}
+	50% {
+	  transform: translate3d(0, 0, 0px) rotateX(90deg) skew(5deg);
+	  clip-path: polygon(
+		0 49%,
+		0 49%,
+		0 49%,
+		100% 49%,
+		100% 51%,
+		0 51%,
+		0 100%,
+		100% 100%,
+		100% 100%,
+		100% 49%
+	  );
+	}
+  
+	to {
+	  transform: translate3d(0, 0, 0px) rotateX(0deg) skew(0deg);
+	  clip-path: polygon(
+		0 49%,
+		0 49%,
+		0 49%,
+		100% 49%,
+		100% 51%,
+		0 51%,
+		0 100%,
+		100% 100%,
+		100% 100%,
+		100% 49%
+	  );
+	}
+  }
 
 .number::before {
 	content: '';

@@ -48,11 +48,12 @@ function getZero(num) {
 getNumTimer (deadLine)
 
 function outputValue ( endTime) {
-    // const timer = document.querySelector(selector)
     const daysOut = document.querySelector('.num__day');
     const hoursOut = document.querySelector('.num__hours');
     const minutesOut = document.querySelector('.num__minutes');
+    // const minutesOutTurn = document.querySelector('.turn');
     const secondsOut = document.querySelector('.num__seconds');
+    const secondsOutTurn = document.querySelector('.turn');
     timeInterval = setInterval(updateClock, 1000);
 
     function updateClock () {
@@ -60,7 +61,9 @@ function outputValue ( endTime) {
         daysOut.innerHTML = getZero(timeValue.days);
         hoursOut.innerHTML = getZero(timeValue.hours);
         minutesOut.innerHTML = getZero(timeValue.minutes);
+        // minutesOutTurn = getZero(timeValue.minutes);
         secondsOut.innerHTML = getZero(timeValue.seconds);
+        secondsOutTurn.innerHTML = getZero(timeValue.seconds);
 
         if(timeValue.t <= 0){
          clearInterval(timeInterval);
