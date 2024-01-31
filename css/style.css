@@ -82,6 +82,7 @@ footer {
   	border: 1px solid #000;
 	border-radius: 10px;
 	color: var(--Soft-red);
+	font-variant-numeric: tabular-nums;
 	/* background: linear-gradient(to bottom, #2e304a 50%, hsl(236, 21%, 26%) 50%); */
 	background: linear-gradient(
     to bottom,
